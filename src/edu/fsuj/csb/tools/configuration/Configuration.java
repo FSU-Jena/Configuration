@@ -44,6 +44,7 @@ public class Configuration {
 				config.put(key, value);
 			}
 		}
+		br.close();
   }
 	
 	public void writeDefault(String key, String value) throws IOException {
