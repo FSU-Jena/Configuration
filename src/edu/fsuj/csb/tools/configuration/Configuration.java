@@ -13,13 +13,19 @@ import edu.fsuj.csb.tools.xml.Tools;
 
 public class Configuration {
 	private String configFileName;
+	private String name;
 	private static final CharSequence defaultConfigComment = "# This is the config file for the InteractionDB\n#\n#use dbport = 12345 to set database port\n\n";
 	private static TreeMap<String,String> config;
-
+	
 	public Configuration(String name) throws IOException {
-		configFileName = System.getProperty("user.home")+"/.config/"+name+"/"+name+".config";
+		this.name=name;
+		configFileName = path()+name+".config";
 		config=null;
 		load();
+	}
+	
+	public String path(){
+		return System.getProperty("user.home")+"/.config/"+name+"/";
 	}
 	
 	private void load() throws IOException {
